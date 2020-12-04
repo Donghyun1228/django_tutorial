@@ -6,6 +6,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from django.utils import timezone
 
 # Create your views here.
 def index(request):
@@ -26,7 +27,7 @@ def index(request):
     # return HttpResponse(template.render(context, request))
 
     # 4. 3의 내용을 shortcut으로 구현
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, 'polls/index.html', context)
 
@@ -51,7 +52,7 @@ def results(request, question_id):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Question
