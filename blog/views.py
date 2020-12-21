@@ -13,9 +13,10 @@ def index(request):
 def create(request):
     return HttpResponse('Post Create')
 
-def detail(request):
-    return HttpResponse('Post Detail')
-
+def detail(request, post_id):
+    selected_post = Post.objects.get(pk=post_id)
+    return render(request, 'blog/detail.html', {'selected_post': selected_post})
+    
 def update(request):
     return HttpResponse('Post Update')
 

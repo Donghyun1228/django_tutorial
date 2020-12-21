@@ -7,7 +7,7 @@ urlpatterns = [
     # /blog/
     path('', views.index, name='index'),
     path('create/', views.create, name='create'),
-    path('<int:pk>/', views.detail, name='detail'),
-    path('<int:pk>', views.update, name='update'),
-    path('<int:pk>', views.delete, name='delete'),
+    path('<int:post_id>/', views.detail, name='detail'),
+    path('<int:post_id>', views.update, name='update'),
+    path('<int:post_id>', views.delete, name='delete'),
 ]
