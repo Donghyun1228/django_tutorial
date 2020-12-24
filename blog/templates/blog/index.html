@@ -1,8 +1,16 @@
+<h1>Dooboo blog</h1>
+<a href="{% url 'blog:create' %}">새글쓰기</a>
+<hr>
 {% if latest_post_list %}
     <ul>
         {% for post in latest_post_list %}
-        <li><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></li>
+        <li>
+            <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>&nbsp;&nbsp;
+            <a href="{% url 'blog:update' post.id %}">수정</a>&nbsp;&nbsp;
+            <a href="{% url 'blog:delete' post.id %}">삭제</a>
+        </li>
         {% endfor %}
+
     </ul>
 
 {% else %}
