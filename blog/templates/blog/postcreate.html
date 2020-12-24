@@ -1,0 +1,10 @@
+<div class="container">
+
+    <h1>새 포스트 작성</h1>
+    <br><br>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="등록하기" class="btn btn-info">
+    </form>
+</div>
