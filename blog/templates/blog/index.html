@@ -1,22 +1,39 @@
-<h1>Dooboo blog</h1>
-<a href="{% url 'blog:create' %}">새글쓰기</a>
-<hr>
-{% if latest_post_list %}
-    <ul>
-        {% for post in latest_post_list %}
-        <li>
-            <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>&nbsp;&nbsp;
-            {{ post.date }}&nbsp;&nbsp;            
-            <a href="{% url 'blog:update' post.id %}">수정</a>&nbsp;&nbsp;
-            <a href="{% url 'blog:delete' post.id %}">삭제</a>
-        </li>
-        {% endfor %}
+{% load static %}
 
-    </ul>
+<head>
+    <title>Dooboo blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" 
+</head>
+<body>
+    <div class="page-header">
+        <h1>Dooboo blog</h1>
+    </div>
 
-{% else %}
-<h1>No posts are available</h1>
-{% endif %}
-    
+    <div>
+        <a href="{% url 'blog:create' %}">새글쓰기</a>
+    </div>
+
+    {% if latest_post_list %}
+        <div>
+        <ul>
+            {% for post in latest_post_list %}
+            <li>
+                <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>&nbsp;&nbsp;
+                {{ post.date }}&nbsp;&nbsp;            
+                <a href="{% url 'blog:update' post.id %}">수정</a>&nbsp;&nbsp;
+                <a href="{% url 'blog:delete' post.id %}">삭제</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+        </div>
+
+    {% else %}
+    <p>No posts are available</p>
+    {% endif %}
+</body>
 
 
