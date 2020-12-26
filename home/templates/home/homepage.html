@@ -1,4 +1,21 @@
-<h1><a href="{% url 'blog:index' %}">Dooboo blog</a></h1>
-<h1><a href="{% url 'polls:index' %}">Polls</a></h1>
-<h1><a href="/admin">Admin Page</a></h1>
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title id="dooboo-applist-title">Dooboo App List</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}"
+</head>
+<html>
+<body>
+    <h1 id="shortcut">바로가기</h1>
+    <div class="app-grid">
 
+            <a class="app-link" href="{% url 'blog:index' %}">Dooboo blog</a>
+
+            <a class="app-link" href="{% url 'polls:index' %}">Polls</a>
+
+            <a class="app-link" href="/admin">Admin Page</a>
+
+    </div>
+</body>
+</html>
