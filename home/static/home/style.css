@@ -1,0 +1,22 @@
+#shortcut {
+    text-align: center;
+    color: rgb(182, 115, 209);
+    font-size: 4vw;
+    padding: 20px;
+    margin-bottom: black solid;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px;
+}
+
+.app-grid .app-link {
+    font-size: 2vw;
+    padding: 3rem;
+    text-align: center;
+    text-decoration: none;
+    border: 5px rgb(153, 60, 60) solid;
+
+}
