@@ -1,39 +1,43 @@
-{% load static %}
+{% extends 'blog/base.html' %}
+{% block content %}
 
-<head>
-    <title>Dooboo blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" 
-</head>
-<body>
-    <div class="page-header">
-        <h1>Dooboo blog</h1>
-    </div>
 
-    <div>
-        <a href="{% url 'blog:create' %}">새글쓰기</a>
-    </div>
+<div class="container">
 
-    {% if latest_post_list %}
-        <div>
-        <ul>
-            {% for post in latest_post_list %}
-            <li>
-                <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>&nbsp;&nbsp;
-                {{ post.date }}&nbsp;&nbsp;            
-                <a href="{% url 'blog:update' post.id %}">수정</a>&nbsp;&nbsp;
-                <a href="{% url 'blog:delete' post.id %}">삭제</a>
-            </li>
-            {% endfor %}
+    <!-- post가 존재할 경우 최대 열 개 출력 --> 
+    {% if latest_post_list %} 
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {% for post in latest_post_list %}
+                    <div class="post-preview">
+                        <a href="{% url 'blog:detail' post.id %}">
+                            <h2 class="post-title">
+                            {{ post.title }}
+                            </h2>
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Start Bootstrap</a>
+                            on {{ post.date }}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
 
-        </ul>
+                <!-- Pager -->
+                {% if latest_post_list.has_next %}
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="?page={{ latest_post_list.next_page_number }}">다음 페이지&rarr;</a>
+                    </div>
+                {% endif %}
+            </div>
         </div>
 
+    <!-- post가 존재하지 않을 경우 메시지 표시 -->
     {% else %}
-    <p>No posts are available</p>
+        <p style="text-align:center;">포스트가 존재하지 않습니다.</p>
     {% endif %}
-</body>
+
+</div>
+
+{% endblock %}
 
 
