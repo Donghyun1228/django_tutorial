@@ -4,6 +4,7 @@
 
 <div class="container">
 
+    <!-- post가 존재할 경우 최대 열 개 출력 --> 
     {% if latest_post_list %} 
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -22,12 +23,15 @@
                 {% endfor %}
 
                 <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="#">다음 페이지&rarr;</a>
-                </div>
+                {% if latest_post_list.has_next %}
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="?page={{ latest_post_list.next_page_number }}">다음 페이지&rarr;</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
 
+    <!-- post가 존재하지 않을 경우 메시지 표시 -->
     {% else %}
         <p style="text-align:center;">포스트가 존재하지 않습니다.</p>
     {% endif %}
