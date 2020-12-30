@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=10)
     date = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(default=' ')
+    content = models.TextField()
 
     # instance를 표시할 때 제목으로 표시
     def __str__(self):

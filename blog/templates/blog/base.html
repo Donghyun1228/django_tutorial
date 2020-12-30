@@ -9,7 +9,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -21,6 +20,10 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'blog/css/clean-blog.min.css' %}" rel="stylesheet">
+
+  <!-- ExtraHead for child template -->
+  {% block extrahead %}
+  {% endblock %}
 
 </head>
 
@@ -43,7 +46,7 @@
             <a class="nav-link" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
+            <a class="nav-link" href="{% url 'blog:create' %}">포스트 작성</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -118,6 +121,8 @@
   <!-- Custom scripts for this template -->
   <script src="{% static 'blog/js/clean-blog.min.js' %}"></script>
 
+  {% block extra_js %}
+  {% endblock %}
 </body>
 
 </html>

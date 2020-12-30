@@ -18,4 +18,6 @@ urlpatterns = [
     
     # /blog/<int>/delete
     path('<int:post_id>/delete/', views.delete, name='delete'),
+
+    path('contact', views.contact, name='contact')
 ]
