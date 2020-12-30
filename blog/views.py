@@ -29,7 +29,7 @@ def create(request):
 
     else:
         form = PostForm()        
-        return render(request, 'blog/contact.html', {'form' : form})
+        return render(request, 'blog/create.html', {'form' : form})
 
 # detail 페이지로 연결
 def detail(request, post_id):
@@ -54,6 +54,3 @@ def delete(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post.delete()
     return HttpResponseRedirect(reverse('blog:index'))
-
-def contact(request):
-    return render(request, 'blog/contact.html')

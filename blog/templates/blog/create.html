@@ -1,10 +1,75 @@
+
 {% extends 'blog/base.html' %}
 
-{% block content %}
-    <form method="post">
+<head>
+  {% load static %}
+
+  {% block extrahead %}
+  <title>Dooboo Blog - Create Post</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'blog/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'blog/css/clean-blog.min.css" rel="stylesheet' %}">
+  {% endblock extrahead %}
+
+</head>
+
+<body>
+
+  {% block content %}
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p style="font-family:sans-serif; font-size:23px"><strong>포스트 작성</strong></p>
+        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+        <form method="post" action="" name="sentMessage" id="contactForm">
         {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <input type="submit" value="등록하기">
-    </form>
-{% endblock %}
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              {{ form.title }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Author</label>
+              {{ form.author }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Content</label>
+              {{ form.content }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">등록하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
+
+  <hr>
+
+  
+  {% block extra_js %}
+  
+  <!-- Contact Form JavaScript <script src="{% static 'blog/js/jqBootstrapValidation.js' %}"></script>
+  <script src="{% static 'blog/js/contact_me.js' %}"></script>--> 
+  {% endblock %}
+
+</body>
+
+</html>
