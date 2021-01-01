@@ -1,8 +1,7 @@
-
 {% extends 'blog/base.html' %}
+{% load static %}
 
 <head>
-  {% load static %}
 
   {% block extrahead %}
   <title>Dooboo Blog - Create Post</title>
@@ -20,6 +19,21 @@
 
 <body>
 
+  {% block header %}
+    <header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+        <div class="overlay"></div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1>포스트 작성</h1>
+            </div>
+            </div>
+        </div>
+        </div>
+    </header>
+  {% endblock %}
+  
   {% block content %}
   <!-- Main Content -->
   <div class="container">

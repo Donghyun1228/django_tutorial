@@ -1,14 +1,31 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 <head>
 {% block extrahead %}
   <title>Dooboo Blog</title>
 {% endblock %}
 </head>
+
 <body>
-{% block content %}
+    {% block header %}
+    <header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+        <div class="overlay"></div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1>Dooboo Blog</h1>
+                <span class="subheading">A Blog for Dooboo</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    {% endblock %}   
 
-
-<div class="container">
+    {% block content %}
+    <div class="container">
 
     <!-- post가 존재할 경우 최대 열 개 출력 --> 
     {% if latest_post_list %} 
@@ -42,7 +59,7 @@
         <p style="text-align:center;">포스트가 존재하지 않습니다.</p>
     {% endif %}
 
-</div>
+    </div>
 
 {% endblock %}
 </body>
