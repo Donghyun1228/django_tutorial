@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'home.apps.HomeConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/blog/'
+LOGIN_URL = '/users/login/'
+LOGOUT_REDIRECT_URL = '/blog/'
+AUTH_USER_MODEL = "users.User"
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # heroku setting
 django_heroku.settings(locals())
+
